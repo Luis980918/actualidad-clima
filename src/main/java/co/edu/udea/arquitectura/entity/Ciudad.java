@@ -20,13 +20,13 @@ public class Ciudad {
     @Column(name = "habilitado", nullable = false)
     private Boolean habilitado;
 
-    @Column(name = "fk_departamento", nullable = false)
-    private Long fkDepartamento;
+    @Column(name = "fk_estado", nullable = false)
+    private Long fkEstado;
 
     // relationships
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_departamento", insertable = false, updatable = false)
+    @JoinColumn(name = "fk_estado", insertable = false, updatable = false)
     private Estado estado;
 
     public Long getId() {
@@ -61,12 +61,12 @@ public class Ciudad {
         this.habilitado = habilitado;
     }
 
-    public Long getFkDepartamento() {
-        return fkDepartamento;
+    public Long getFkEstado() {
+        return fkEstado;
     }
 
-    public void setFkDepartamento(Long fkDepartamento) {
-        this.fkDepartamento = fkDepartamento;
+    public void setFkEstado(Long fkDepartamento) {
+        this.fkEstado = fkDepartamento;
     }
 
     public Estado getDepartamento() {
