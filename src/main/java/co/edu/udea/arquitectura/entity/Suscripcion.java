@@ -18,7 +18,7 @@ public class Suscripcion {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fk_usuario", insertable=false, updatable=false)
-    private Usuario fk_usuario;
+    private Usuario fkUsuario;
 
     public Long getId() {
         return id;
@@ -37,10 +37,10 @@ public class Suscripcion {
     }
 
     public Usuario getFk_usuario() {
-        return fk_usuario;
+        return fkUsuario;
     }
 
-    public void setFk_usuario(Usuario fk_usuario) {
-        this.fk_usuario = fk_usuario;
+    public void setFkUsuario(Usuario fkUsuario) {
+        this.fkUsuario = fkUsuario;
     }
 }
