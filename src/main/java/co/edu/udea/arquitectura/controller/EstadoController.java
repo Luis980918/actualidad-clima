@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/departamento")
+@RequestMapping("/estado")
 public class EstadoController {
     private final EstadoFacade estadoFacade;
     private final Messages messages;
