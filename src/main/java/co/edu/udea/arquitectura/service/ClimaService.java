@@ -6,10 +6,14 @@ import co.edu.udea.arquitectura.exception.BusinessException;
 import co.edu.udea.arquitectura.repository.ClimaRepository;
 
 import co.edu.udea.arquitectura.util.Messages;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class ClimaService {
     private final ClimaRepository climaRepository;
     private final Messages messages;

@@ -3,8 +3,11 @@ package co.edu.udea.arquitectura.facade;
 import co.edu.udea.arquitectura.mapper.ClimaMapper;
 import co.edu.udea.arquitectura.modelo.ClimaDTO;
 import co.edu.udea.arquitectura.service.ClimaService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Service
+@Transactional
 public class ClimaFacade {
     private final ClimaService climaService;
     private final ClimaMapper climaMapper;
