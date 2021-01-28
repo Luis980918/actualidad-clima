@@ -4,6 +4,7 @@ import co.edu.udea.arquitectura.entity.Ciudad;
 import co.edu.udea.arquitectura.entity.Suscripcion;
 
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
 public class SuscripcionPorCiudadDTO {
@@ -12,10 +13,14 @@ public class SuscripcionPorCiudadDTO {
     private Long id;
 
     @NotNull
-    private Suscripcion fkSuscripcion;
+    private Long fkSuscripcion;
 
     @NotNull
-    private Ciudad fkCiudad;
+    private Long fkCiudad;
+
+    private Suscripcion suscripcion;
+
+    private Ciudad ciudad;
 
     public Long getId() {
         return id;
@@ -25,19 +30,35 @@ public class SuscripcionPorCiudadDTO {
         this.id = id;
     }
 
-    public Suscripcion getFkSuscripcion() {
+    public Long getFkSuscripcion() {
         return fkSuscripcion;
     }
 
-    public void setFkSuscripcion(Suscripcion fkSuscripcion) {
+    public void setFkSuscripcion(Long fkSuscripcion) {
         this.fkSuscripcion = fkSuscripcion;
     }
 
-    public Ciudad getFkCiudad() {
+    public Long getFkCiudad() {
         return fkCiudad;
     }
 
-    public void setFkCiudad(Ciudad fkCiudad) {
+    public void setFkCiudad(Long fkCiudad) {
         this.fkCiudad = fkCiudad;
+    }
+
+    public Suscripcion getSuscripcion() {
+        return suscripcion;
+    }
+
+    public void setSuscripcion(Suscripcion suscripcion) {
+        this.suscripcion = suscripcion;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
 }

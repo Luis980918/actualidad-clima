@@ -15,10 +15,12 @@ public class Clima {
     @Column
     private String temperatura;
 
+    @Column(name = "fk_tipoTemperatura", nullable = false)
+    private Long fkTipoTemperatura;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="fk_TipoTemperatura", insertable=false, updatable=false)
-    private TipoTemperatura fkTipoTemperatura;
+    @JoinColumn(name="fk_tipoTemperatura", insertable=false, updatable=false)
+    private TipoTemperatura tipoTemperatura;
 
     public Long getId() {
         return id;
@@ -36,11 +38,19 @@ public class Clima {
         this.temperatura = temperatura;
     }
 
-    public TipoTemperatura getFkTipoTemperatura() {
+    public Long getFkTipoTemperatura() {
         return fkTipoTemperatura;
     }
 
-    public void setFkTipoTemperatura(TipoTemperatura fkTipoTemperatura) {
+    public void setFkTipoTemperatura(Long fkTipoTemperatura) {
         this.fkTipoTemperatura = fkTipoTemperatura;
+    }
+
+    public TipoTemperatura getTipoTemperatura() {
+        return tipoTemperatura;
+    }
+
+    public void setTipoTemperatura(TipoTemperatura tipoTemperatura) {
+        this.tipoTemperatura = tipoTemperatura;
     }
 }

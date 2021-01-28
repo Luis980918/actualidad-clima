@@ -16,9 +16,12 @@ public class Suscripcion {
     private String estado;
 
 
+    @Column(name = "fk_usuario", nullable = false)
+    private Long fkUsuario;
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fk_usuario", insertable=false, updatable=false)
-    private Usuario fkUsuario;
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -36,11 +39,19 @@ public class Suscripcion {
         this.estado = estado;
     }
 
-    public Usuario getFk_usuario() {
+    public Long getFkUsuario() {
         return fkUsuario;
     }
 
-    public void setFkUsuario(Usuario fkUsuario) {
+    public void setFkUsuario(Long fkUsuario) {
         this.fkUsuario = fkUsuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

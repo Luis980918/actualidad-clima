@@ -10,7 +10,9 @@ public class ClimaDTO {
     @NotNull
     private String temperatura;
     @NotNull
-    private TipoTemperatura fk_TipoTemperatura;
+    private Long fkTipoTemperatura;
+
+    private TipoTemperatura tipoTemperatura;
 
     public Long getId() {
         return id;
@@ -28,11 +30,19 @@ public class ClimaDTO {
         this.temperatura = temperatura;
     }
 
-    public TipoTemperatura getFk_TipoTemperatura() {
-        return fk_TipoTemperatura;
+    public Long getFkTipoTemperatura() {
+        return fkTipoTemperatura;
     }
 
-    public void setFk_TipoTemperatura(TipoTemperatura fk_TipoTemperatura) {
-        this.fk_TipoTemperatura = fk_TipoTemperatura;
+    public void setFkTipoTemperatura(Long fkTipoTemperatura) {
+        this.fkTipoTemperatura = fkTipoTemperatura;
+    }
+
+    public TipoTemperatura getTipoTemperatura() {
+        return tipoTemperatura;
+    }
+
+    public void setTipoTemperatura(TipoTemperatura tipoTemperatura) {
+        this.tipoTemperatura = tipoTemperatura;
     }
 }

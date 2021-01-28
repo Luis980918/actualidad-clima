@@ -16,7 +16,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/clima
     username:
-    password: 
+    password:
     hikari:
       idle-timeout: 10000
       maximum-pool-size: 5

@@ -10,7 +10,9 @@ public class SuscripcionDTO {
     @NotNull
     private String estado;
     @NotNull
-    private Usuario fk_usuario;
+    private Long fkUsuario;
+
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -28,11 +30,19 @@ public class SuscripcionDTO {
         this.estado = estado;
     }
 
-    public Usuario getFk_usuario() {
-        return fk_usuario;
+    public Long getFkUsuario() {
+        return fkUsuario;
     }
 
-    public void setFk_usuario(Usuario fk_usuario) {
-        this.fk_usuario = fk_usuario;
+    public void setFkUsuario(Long fkUsuario) {
+        this.fkUsuario = fkUsuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

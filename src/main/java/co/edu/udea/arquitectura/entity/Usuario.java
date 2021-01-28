@@ -32,20 +32,9 @@ public class Usuario {
     @Column(name = "celular")
     private String celular;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
-    private TipoUsuario tipo;
-
-    //Cliente
-
-    @Column(name = "fecha_ingreso")
-    private LocalDate fechaIngreso;
 
     @Column(name = "fk_ciudad_cliente")
     private Long fkCiudadCliente;
-
-    @Column(name = "fk_administrador")
-    private Long fkAdministrador;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_ciudad_cliente", insertable = false, updatable = false)
@@ -56,6 +45,7 @@ public class Usuario {
     @JoinColumn(name = "fk_administrador", insertable = false, updatable = false)
     private Usuario administrador;
     */
+
     public Long getId() {
         return id;
     }
@@ -112,36 +102,12 @@ public class Usuario {
         this.celular = celular;
     }
 
-    public TipoUsuario getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoUsuario tipo) {
-        this.tipo = tipo;
-    }
-
-    public LocalDate getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(LocalDate fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
     public Long getFkCiudadCliente() {
         return fkCiudadCliente;
     }
 
     public void setFkCiudadCliente(Long fkCiudadCliente) {
         this.fkCiudadCliente = fkCiudadCliente;
-    }
-
-    public Long getFkAdministrador() {
-        return fkAdministrador;
-    }
-
-    public void setFkAdministrador(Long fkAdministrador) {
-        this.fkAdministrador = fkAdministrador;
     }
 
     public Ciudad getCiudadCliente() {
@@ -151,5 +117,4 @@ public class Usuario {
     public void setCiudadCliente(Ciudad ciudadCliente) {
         this.ciudadCliente = ciudadCliente;
     }
-
 }
