@@ -11,8 +11,9 @@ public class CiudadDTO {
     @NotNull
     private Boolean habilitado;
     @NotNull
-    private Long fkDepartamento;
+    private Long fkEstado;
     private EstadoDTO departamento;
+    private Boolean tieneSuscripcion;
 
     public Long getId() {
         return id;
@@ -46,12 +47,12 @@ public class CiudadDTO {
         this.habilitado = habilitado;
     }
 
-    public Long getFkDepartamento() {
-        return fkDepartamento;
+    public Long getFkEstado() {
+        return fkEstado;
     }
 
-    public void setFkDepartamento(Long fkDepartamento) {
-        this.fkDepartamento = fkDepartamento;
+    public void setFkEstado(Long fkEstado) {
+        this.fkEstado = fkEstado;
     }
 
     public EstadoDTO getDepartamento() {
@@ -60,5 +61,13 @@ public class CiudadDTO {
 
     public void setDepartamento(EstadoDTO departamento) {
         this.departamento = departamento;
+    }
+
+    public Boolean getTieneSuscripcion() {
+        return tieneSuscripcion;
+    }
+
+    public void setTieneSuscripcion(Boolean tieneSuscripcion) {
+        this.tieneSuscripcion = tieneSuscripcion;
     }
 }

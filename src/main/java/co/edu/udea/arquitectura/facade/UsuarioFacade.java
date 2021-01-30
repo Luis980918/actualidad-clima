@@ -1,5 +1,6 @@
 package co.edu.udea.arquitectura.facade;
 
+import co.edu.udea.arquitectura.entity.Usuario;
 import co.edu.udea.arquitectura.mapper.UsuarioMapper;
 import co.edu.udea.arquitectura.modelo.UsuarioDTO;
 import co.edu.udea.arquitectura.service.UsuarioService;
@@ -32,6 +33,16 @@ public class UsuarioFacade {
 
     public UsuarioDTO consultarPorId(Long id) {
         return usuarioMapper.toDto(usuarioService.consultarPorId(id));
+    }
+
+    public UsuarioDTO buscarUsuarioPorCorreo(String correo, String contrasena) {
+        Usuario usuario = usuarioService.buscarUsuarioPorCorreo(correo, contrasena);
+        UsuarioDTO usuarioDTO = usuarioMapper.toDto(usuario);
+        if(usuario.getUsuarioList() != null && !usuario.getUsuarioList().isEmpty()){
+            usuarioDTO.setIdSuscripcion(usuario.getUsuarioList().get(0).getId());
+        }
+
+        return usuarioDTO;
     }
 
 }

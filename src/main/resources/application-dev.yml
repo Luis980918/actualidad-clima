@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   jpa:
     show-sql: false
     hibernate:
@@ -28,3 +30,6 @@ logging:
   level:
     root: INFO
   file: actualidad-clima.log
+
+weather:
+  api: api.openweathermap.org/data/2.5/weather

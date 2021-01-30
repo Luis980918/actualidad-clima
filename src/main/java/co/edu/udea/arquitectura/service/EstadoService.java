@@ -7,6 +7,7 @@ import co.edu.udea.arquitectura.util.Messages;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -47,5 +48,9 @@ public class EstadoService {
     public Estado consultarPorId(Long id) {
         return estadoRepository.findById(id).orElseThrow(
                 () -> new BusinessException(messages.get("estado.id.no_encontrado")));
+    }
+
+    public List<Estado> buscarTodos() {
+        return estadoRepository.findAll();
     }
 }

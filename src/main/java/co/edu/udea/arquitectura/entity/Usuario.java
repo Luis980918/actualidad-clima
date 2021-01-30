@@ -1,9 +1,9 @@
 package co.edu.udea.arquitectura.entity;
 
-import co.edu.udea.arquitectura.util.enums.TipoUsuario;
-
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -15,10 +15,7 @@ public class Usuario {
     private Long id;
 
     @Column(name = "nombre")
-    private String nombre;
-
-    @Column(name = "apellido")
-    private String apellido;
+    private String nombreCompleto;
 
     @Column(name = "correo", nullable = false, length = 100, unique = true)
     private String correo;
@@ -32,7 +29,6 @@ public class Usuario {
     @Column(name = "celular")
     private String celular;
 
-
     @Column(name = "fk_ciudad_cliente")
     private Long fkCiudadCliente;
 
@@ -40,11 +36,8 @@ public class Usuario {
     @JoinColumn(name = "fk_ciudad_cliente", insertable = false, updatable = false)
     private Ciudad ciudadCliente;
 
-    /*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_administrador", insertable = false, updatable = false)
-    private Usuario administrador;
-    */
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Suscripcion> usuarioList = new ArrayList<Suscripcion>();
 
     public Long getId() {
         return id;
@@ -54,20 +47,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getCorreo() {
@@ -116,5 +101,13 @@ public class Usuario {
 
     public void setCiudadCliente(Ciudad ciudadCliente) {
         this.ciudadCliente = ciudadCliente;
+    }
+
+    public List<Suscripcion> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(List<Suscripcion> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 }

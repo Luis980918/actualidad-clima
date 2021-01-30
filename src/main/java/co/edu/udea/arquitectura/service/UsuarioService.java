@@ -49,4 +49,13 @@ public class UsuarioService {
         return usuarioRepository.findById(id).orElseThrow(
                 () -> new BusinessException(messages.get("usuario.id.no_encontrado")));
     }
+
+    public Usuario buscarUsuarioPorCorreo(String correo, String contrasena) {
+        Usuario usuarioConsulta = usuarioRepository.findByCorreo(correo).orElseThrow(
+                () -> new BusinessException(messages.get("usuario.correo.no_encontrado")));
+        if (!usuarioConsulta.getContrasena().equals(contrasena)) {
+            throw new BusinessException(messages.get("usuario.contrasena.no_valida"));
+        }
+        return usuarioConsulta;
+    }
 }

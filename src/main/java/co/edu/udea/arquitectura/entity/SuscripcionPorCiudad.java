@@ -3,7 +3,7 @@ package co.edu.udea.arquitectura.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="estado")
+@Table(name="subscripcion_por_ciudad")
 public class SuscripcionPorCiudad {
 
     @Id

@@ -25,11 +25,6 @@ public class SuscripcionService {
     }
 
     public Suscripcion guardarSuscripcion(Suscripcion suscripcion){
-
-        Optional<Suscripcion> suscripcionConsulta=suscripcionRepository.findById(suscripcion.getId());
-        if(suscripcionConsulta.isPresent()){
-            throw new BusinessException(messages.get("suscripcion.id.duplicado"));
-        }
         return suscripcionRepository.save(suscripcion);
     }
 

@@ -47,15 +47,15 @@ public class SuscripcionPorCiudadController {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("suscripcion.actualizar.exito"), suscripcionPorCiudadFacade.actualizarSuscripcion(suscripcion)));
     }
 
-    @DeleteMapping("/{codigoSuscripcion}")
+    @DeleteMapping("/{codigoSuscripcion}/{idCiudad}")
     @ApiOperation(value = "Permite eliminar una suscripcion")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Se eliminó exitosamente"),
             @ApiResponse(code = 400, message = "La petición es inválida"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
-    public ResponseEntity<StandardResponse<Void>> eliminarSuscripcion(@PathVariable Long codigoSuscripcion) {
+    public ResponseEntity<StandardResponse<Void>> eliminarSuscripcion(@PathVariable Long codigoSuscripcion, @PathVariable Long idCiudad) {
         try {
-            suscripcionPorCiudadFacade.eliminarSuscripcion(codigoSuscripcion);
+            suscripcionPorCiudadFacade.eliminarSuscripcion(codigoSuscripcion, idCiudad);
             return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("suscripcion.eliminar.exito")));
         } catch (DataIntegrityViolationException e) {
             throw new DataNotFoundException(messages.get("suscripcion.eliminar.error"));

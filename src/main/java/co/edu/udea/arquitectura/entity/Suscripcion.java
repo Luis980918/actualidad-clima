@@ -12,9 +12,8 @@ public class Suscripcion {
     @Column
     private Long id;
 
-    @Column
+    @Column(name = "estado")
     private String estado;
-
 
     @Column(name = "fk_usuario", nullable = false)
     private Long fkUsuario;

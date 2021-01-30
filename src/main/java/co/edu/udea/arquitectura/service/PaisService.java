@@ -7,6 +7,7 @@ import co.edu.udea.arquitectura.util.Messages;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -48,5 +49,9 @@ public class PaisService {
     public Pais consultarPorId(Long id) {
         return paisRepository.findById(id).orElseThrow(
                 () -> new BusinessException(messages.get("pais.id.no_encontrado")));
+    }
+
+    public List<Pais> buscarTodos() {
+        return paisRepository.findAll();
     }
 }

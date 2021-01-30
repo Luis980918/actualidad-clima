@@ -6,6 +6,8 @@ import co.edu.udea.arquitectura.service.EstadoService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class EstadoFacade {
@@ -30,5 +32,9 @@ public class EstadoFacade {
 
     public EstadoDTO consultarPorId(Long id) {
         return estadoMapper.toDto(estadoService.consultarPorId(id));
+    }
+
+    public List<EstadoDTO> buscarTodos() {
+        return estadoMapper.toDto(estadoService.buscarTodos());
     }
 }

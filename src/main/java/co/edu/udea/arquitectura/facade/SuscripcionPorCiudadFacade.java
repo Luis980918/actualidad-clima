@@ -27,8 +27,8 @@ public class SuscripcionPorCiudadFacade {
         return suscripcionPorCiudadMapper.toDto(suscripcionPorCiudadService.actualizarSuscripcionPorCiudad(suscripcionPorCiudadMapper.toEntity(suscripcion)));
     }
 
-    public void eliminarSuscripcion(Long id) {
-        suscripcionPorCiudadService.eliminarSuscripcion(id);
+    public void eliminarSuscripcion(Long id, Long idCiudad) {
+        suscripcionPorCiudadService.eliminarSuscripcion(id, idCiudad);
     }
 
     public SuscripcionPorCiudadDTO consultarPorId(Long id) {

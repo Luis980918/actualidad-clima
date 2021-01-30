@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/estado")
@@ -33,7 +34,7 @@ public class EstadoController {
             @ApiResponse(code = 400, message = "La petición es inválida"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
     public ResponseEntity<StandardResponse<EstadoDTO>> guardarDepartamento(@Valid @RequestBody EstadoDTO departamento) {
-        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("departamento.guardar.exito"), estadoFacade.guardarEstado(departamento)));
+        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("estado.guardar.exito"), estadoFacade.guardarEstado(departamento)));
 
     }
     @PutMapping
@@ -43,7 +44,7 @@ public class EstadoController {
             @ApiResponse(code = 400, message = "La petición es inválida"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
     public ResponseEntity<StandardResponse<EstadoDTO>> actualizarDepartamento(@Valid @RequestBody EstadoDTO departamento) {
-        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("departamento.actualizatr.exito"), estadoFacade.actualizarEstado(departamento)));
+        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("estado.actualizatr.exito"), estadoFacade.actualizarEstado(departamento)));
     }
 
     @DeleteMapping("/{codigoDepartamento}")
@@ -55,7 +56,7 @@ public class EstadoController {
     public ResponseEntity<StandardResponse<Void>> eliminarDepartamento(@PathVariable Long codigoDepartamento) {
         try {
             estadoFacade.eliminarEstado(codigoDepartamento);
-            return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("departamento.eliminar.exito")));
+            return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, messages.get("estado.eliminar.exito")));
         } catch (DataIntegrityViolationException e) {
             throw new DataNotFoundException(messages.get("departamento.eliminar.error"));
         }
@@ -69,5 +70,16 @@ public class EstadoController {
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
     public ResponseEntity<StandardResponse<EstadoDTO>> consultarPorId(@PathVariable Long codigoDepartamento) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, estadoFacade.consultarPorId(codigoDepartamento)));
+    }
+
+
+    @GetMapping
+    @ApiOperation(value = "Permite buscar todos los estados", response = List.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Los estados se consultaron correctamente"),
+            @ApiResponse(code = 400, message = "La petición es inválida"),
+            @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
+    public ResponseEntity<StandardResponse<List<EstadoDTO>>> buscarTodos() {
+        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, estadoFacade.buscarTodos()));
     }
 }

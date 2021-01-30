@@ -1,6 +1,5 @@
 package co.edu.udea.arquitectura.service;
 
-import co.edu.udea.arquitectura.entity.Estado;
 import co.edu.udea.arquitectura.entity.SuscripcionPorCiudad;
 import co.edu.udea.arquitectura.exception.BusinessException;
 import co.edu.udea.arquitectura.repository.SuscripcionPorCiudadRepository;
@@ -8,8 +7,8 @@ import co.edu.udea.arquitectura.util.Messages;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,11 +21,7 @@ public class SuscripcionPorCiudadService {
         this.messages = messages;
     }
 
-    public SuscripcionPorCiudad guardarSuscripcion(SuscripcionPorCiudad suscripcionPorCiudad){
-        Optional<SuscripcionPorCiudad> suscripcionPorCiudadConsulta=suscripcionPorCiudadRepository.findById(suscripcionPorCiudad.getId());
-        if(suscripcionPorCiudadConsulta.isPresent()){
-            throw new BusinessException(messages.get("suscripcion.id.duplicado"));
-        }
+    public SuscripcionPorCiudad guardarSuscripcion(SuscripcionPorCiudad suscripcionPorCiudad) {
         return suscripcionPorCiudadRepository.save(suscripcionPorCiudad);
     }
 
@@ -43,8 +38,19 @@ public class SuscripcionPorCiudadService {
                 () -> new BusinessException(messages.get("estado.id.no_encontrado")));
     }
 
-    public void eliminarSuscripcion(Long id) {
-        consultarPorId(id);
-        suscripcionPorCiudadRepository.deleteById(id);
+    public void eliminarSuscripcion(Long id, Long idCiudad) {
+        suscripcionPorCiudadRepository.deleteByFkCiudadAndFkSuscripcion(idCiudad, id);
+    }
+
+    public List<SuscripcionPorCiudad> buscarPorCodigoUsuario(Long idUsuario) {
+        return suscripcionPorCiudadRepository.buscarPorCodigoUsuario(idUsuario);
+    }
+
+    public void deleteByFkSuscripcion(Long fkSuscripcion) {
+        suscripcionPorCiudadRepository.deleteByFkSuscripcion(fkSuscripcion);
+    }
+
+    public List<SuscripcionPorCiudad> findByFkSuscripcion(Long subscriptionId) {
+        return suscripcionPorCiudadRepository.findByFkSuscripcion(subscriptionId);
     }
 }

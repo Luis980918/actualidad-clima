@@ -10,9 +10,7 @@ public class UsuarioDTO {
 
     private Long id;
     @NotNull
-    private String nombre;
-    @NotNull
-    private String apellido;
+    private String nombreCompleto;
     @NotNull
     private String correo;
     @NotNull
@@ -21,8 +19,7 @@ public class UsuarioDTO {
     private String celular;
     private Long fkCiudadCliente;
     private Ciudad ciudadCliente;
-    /*@NotNull
-    private TipoUsuario tipo;*/
+    private Long idSuscripcion;
 
     public Long getId() {
         return id;
@@ -32,20 +29,12 @@ public class UsuarioDTO {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getCorreo() {
@@ -94,5 +83,13 @@ public class UsuarioDTO {
 
     public void setCiudadCliente(Ciudad ciudadCliente) {
         this.ciudadCliente = ciudadCliente;
+    }
+
+    public Long getIdSuscripcion() {
+        return idSuscripcion;
+    }
+
+    public void setIdSuscripcion(Long idSuscripcion) {
+        this.idSuscripcion = idSuscripcion;
     }
 }

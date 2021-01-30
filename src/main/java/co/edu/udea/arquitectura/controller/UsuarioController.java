@@ -71,4 +71,14 @@ public class UsuarioController {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, usuarioFacade.consultarPorId(codigoUsuario)));
     }
 
+    @GetMapping("iniciar-sesion/{correo}/{contrasena}")
+    @ApiOperation(value = "Permite buscar un usuario por correo y contraseña", response = UsuarioDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "El usuario se consultó correctamente"),
+            @ApiResponse(code = 400, message = "La petición es inválida"),
+            @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
+    public ResponseEntity<StandardResponse<UsuarioDTO>> buscarUsuarioPorCorreo(@PathVariable String correo, @PathVariable String contrasena) {
+        return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK, usuarioFacade.buscarUsuarioPorCorreo(correo, contrasena)));
+    }
+
 }
